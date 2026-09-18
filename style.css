@@ -329,4 +329,44 @@ h1 {
 
 #timer {
   margin-top: -0px;
+
+}
+
+/* ===== NOUVEL AFFICHAGE GRAND FORMAT ===== */
+
+#timer {
+  font-size: 120px !important;
+  line-height: 1;
+  margin: 5px 0 10px 0;
+}
+
+#rabbit {
+  width: 260px !important;
+  height: 260px !important;
+  object-fit: contain;
+}
+
+#rabbitState {
+  font-size: 28px !important;
+  margin: 5px 0 !important;
+}
+
+#message {
+  font-size: 32px !important;
+  margin: 5px 0 10px 0 !important;
+}
+
+#buzzer {
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
+
+  width: 280px !important;
+  height: 280px !important;
+
+  margin: 20px auto 30px auto !important;
+
+  font-size: 60px !important;
+  flex-shrink: 0;
 }
