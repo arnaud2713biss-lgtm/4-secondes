@@ -447,3 +447,54 @@ h1 {
 #reset {
   margin-top: 55px !important;
 }
+
+/* ===== PLEIN ECRAN ===== */
+
+html, body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+.app {
+  width: 100%;
+  min-height: 100dvh;
+  padding: 15px 12px 30px !important;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* Répartit le contenu sur toute la hauteur */
+  justify-content: space-between !important;
+}
+
+/* On garde les tailles actuelles */
+
+#timer {
+  margin: 0 !important;
+}
+
+#rabbit {
+  margin: 0 !important;
+}
+
+#rabbitState {
+  margin: 0 !important;
+}
+
+#message {
+  margin: 0 !important;
+}
+
+#buzzer {
+  margin: 0 auto !important;
+}
+
+#reset {
+  margin: 0 !important;
+}
