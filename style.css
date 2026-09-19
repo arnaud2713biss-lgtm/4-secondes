@@ -3,227 +3,158 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+html,
 body {
   margin: 0;
-  background: #0d0d0d;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background: #050505;
+}
+
+body {
   color: white;
   font-family: Arial, sans-serif;
-  overflow-y: auto;
   user-select: none;
 }
 
+/* ===== ÉCRAN COMPLET ===== */
+
 .app {
   width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100dvh;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-padding-top: 20px;
-box-sizing: border-box;
-  overflow: visible;
 
-  transition: background 0.2s;
+  padding: 10px 14px 18px;
+
+  background: #050505;
+  overflow: hidden;
 }
 
-h1 {
-  margin: 5px;
-  font-size: 30px;
-  letter-spacing: 4px;
-}
+/* ===== CHIFFRE ===== */
 
 #timer {
-  font-size: 90px;
-  line-height: 1;
+  font-size: clamp(80px, 14vh, 135px);
+  line-height: 0.9;
   font-weight: 900;
-  margin: 5px;
-}
 
-.lights {
-  display: flex;
-  gap: 15px;
-  margin: 10px 0;
-}
-
-.light {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #333;
-  border: 2px solid #777;
-}
-
-.light.active {
-  background: #00ff66;
-  box-shadow: 0 0 15px #00ff66;
-}
-
-#message {
-  height: 35px;
-  font-size: 25px;
-  font-weight: bold;
-  margin: 5px;
-}
-
-#buzzer {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-
-  border: 12px solid #5c0000;
-
-  background: radial-gradient(
-    circle at 40% 30%,
-    #ff5555 0%,
-    #ff1010 25%,
-    #d90000 60%,
-    #a00000 100%
-  );
+  margin: 0 0 10px;
 
   color: white;
-  font-size: 48px;
+  text-shadow: 0 0 20px rgba(60, 130, 255, 0.55);
+}
+
+/* ===== LAPIN ===== */
+
+#rabbit {
+  width: clamp(150px, 24vh, 220px);
+  height: clamp(150px, 24vh, 220px);
+
+  object-fit: contain;
+
+  margin: 0;
+}
+
+/* ===== TRANQUILLE / RÉFLÉCHIS / ETC ===== */
+
+#rabbitState {
+  font-size: clamp(25px, 3.5vh, 38px);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: 1px;
+
+  margin: 0;
+  text-align: center;
+}
+
+/* ===== PRÊT ? / RÉPONSE ===== */
+
+#message {
+  height: auto;
+  min-height: 0;
+
+  font-size: clamp(29px, 4vh, 44px);
+  line-height: 1;
   font-weight: 900;
 
-  text-shadow: 0 3px 3px rgba(0,0,0,0.5);
+  margin: 6px 0 12px;
+
+  text-align: center;
+}
+
+/* ===== GROS BUZZ ===== */
+
+#buzzer {
+  width: min(78vw, 48vh);
+  height: min(78vw, 48vh);
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  border: 12px solid #650000;
+
+  background:
+    radial-gradient(
+      circle at 38% 25%,
+      #ff6868 0%,
+      #ff2020 20%,
+      #ed0808 55%,
+      #a00000 100%
+    );
+
+  color: white;
+
+  font-size: clamp(58px, 11vw, 95px);
+  font-weight: 900;
+
+  text-shadow:
+    0 4px 4px rgba(0,0,0,0.6);
 
   box-shadow:
-    inset 0 8px 12px rgba(255,255,255,0.25),
-    inset 0 -12px 15px rgba(80,0,0,0.5),
-    0 14px 0 #580000,
-    0 20px 25px rgba(0,0,0,0.7);
+    inset 0 10px 16px rgba(255,255,255,0.35),
+    inset 0 -16px 20px rgba(80,0,0,0.55),
+    0 15px 0 #580000,
+    0 0 28px rgba(255,0,0,0.55);
 
   cursor: pointer;
   touch-action: manipulation;
 
-  transition:
-    transform 0.08s,
-    box-shadow 0.08s;
-}
-
-#buzzer:active {
-  transform: translateY(10px);
-
-  box-shadow:
-    inset 0 5px 15px rgba(0,0,0,0.35),
-    0 4px 0 #580000,
-    0 7px 10px rgba(0,0,0,0.6);
-}
-
-.instruction {
-  margin-top: 10px;
-  font-size: 14px;
-  letter-spacing: 2px;
-  opacity: 0.6;
-}
-
-#reset {
-  margin-top: 20px;
-
-  background: transparent;
-  border: 1px solid #555;
-  color: #aaa;
-
-  padding: 10px 25px;
-  border-radius: 20px;
-
-  font-size: 13px;
-}
-
-.lost {
-  background: #9b0000;
-}
-
-.lost #timer {
-  animation: shake 0.25s linear 3;
-}
-
-@keyframes shake {
-
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-12px); }
-  50% { transform: translateX(12px); }
-  75% { transform: translateX(-12px); }
-  100% { transform: translateX(0); }
-
-}
-/* Animations du lapin */
-
-.rabbit-calm {
-  animation: calm 1s ease-in-out infinite;
-}
-
-.rabbit-think {
-  animation: think 0.7s ease-in-out infinite;
-}
-
-.rabbit-stress {
-  animation: stress 0.25s linear infinite;
-}
-
-.rabbit-panic {
-  animation: panic 0.12s linear infinite;
-}
-
-.rabbit-lost {
-  animation: lostRabbit 0.5s ease forwards;
-}
-
-@keyframes calm {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.03); }
-}
-
-@keyframes think {
-  0%, 100% { transform: rotate(-2deg); }
-  50% { transform: rotate(2deg); }
-}
-
-@keyframes stress {
-  0% { transform: translateX(-3px); }
-  50% { transform: translateX(3px); }
-  100% { transform: translateX(-3px); }
-}
-
-@keyframes panic {
-  0% { transform: translate(-5px, 0) rotate(-2deg); }
-  50% { transform: translate(5px, -2px) rotate(2deg); }
-  100% { transform: translate(-5px, 0) rotate(-2deg); }
-}
-
-@keyframes lostRabbit {
-  0% { transform: scale(1.15); }
-  100% { transform: scale(1); }
-}
-#rabbit {
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
   margin: 0;
 }
 
-#rabbitState {
-  font-size: 18px;
-  font-weight: 900;
-  letter-spacing: 2px;
-  margin-top: -5px;
-  margin-bottom: 5px;
+/* Effet quand on appuie */
+
+#buzzer:active {
+  transform: translateY(8px);
+
+  box-shadow:
+    inset 0 8px 14px rgba(255,255,255,0.25),
+    inset 0 -10px 16px rgba(80,0,0,0.55),
+    0 6px 0 #580000,
+    0 0 20px rgba(255,0,0,0.7);
 }
 
-#buzzer {
-  display: block !important;
-  position: fixed !important;
-  bottom: 30px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  z-index: 9999 !important;
+/* ===== RESET ===== */
 
-  width: 150px !important;
-  height: 150px !important;
-  background: red !important;
+#reset {
+  margin-top: auto;
+
+  min-width: 130px;
+  padding: 10px 24px;
+
+  border-radius: 30px;
+  border: 2px solid #666;
+
+  background: transparent;
+  color: #999;
+
+  font-size: 16px;
 }
-/* ===== ECRAN PERDU ===== */
+
+/* ===== ÉCRAN PERDU ===== */
 
 .lost {
   background: #8b0000 !important;
@@ -238,298 +169,45 @@ h1 {
 }
 
 .lost #rabbitState {
-  font-size: 28px;
-  animation: lostText 0.5s ease-in-out infinite alternate;
+  animation: lostText 0.5s ease-in-out;
 }
 
+/* ===== ANIMATIONS ===== */
+
 @keyframes timerLose {
-  0%   { transform: translateX(-8px); }
-  50%  { transform: translateX(8px); }
-  100% { transform: translateX(0); }
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
 }
 
 @keyframes rabbitLose {
-  0%   { transform: scale(1.4) rotate(-10deg); }
-  50%  { transform: scale(0.9) rotate(10deg); }
-  100% { transform: scale(1) rotate(0); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15) rotate(-5deg);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes lostText {
-  from { transform: scale(1); }
-  to   { transform: scale(1.15); }
-}
-#scoreDisplay {
-  font-size: 22px;
-  font-weight: bold;
-  margin-top: 8px;
-  color: white;
-  z-index: 10;
-}
+  0% {
+    transform: scale(1);
+  }
 
+  50% {
+    transform: scale(1.15);
+  }
 
-#scoreDisplay {
-  font-size: 22px;
-  font-weight: bold;
-  margin-top: 18px;
-  color: white;
-  z-index: 10;
-}
-
-/* Ajustement affichage mobile */
-
-#rabbit {
-  width: 160px;
-  height: 160px;
-  object-fit: contain;
-}
-
-#rabbitState {
-  margin: 2px 0;
-}
-
-#message {
-  margin: 2px 0 8px 0;
-}
-
-#buzzer {
-  margin-top: 0;
-  flex-shrink: 0;
-}
-
-
-
-.instruction {
-  margin-top: 12px;
-}
-
-#message {
-  height: auto;
-  min-height: 30px;
-  margin: 8px 0 18px 0;
-}
-
-#buzzer {
-  margin-top: 15px;
-}
-
-#scoreDisplay {
-  display: block;
-  margin-top: 22px;
-  margin-bottom: 8px;
-}
-#scoreDisplay {
-  margin-top: 8px;
-  font-size: 22px;
-  font-weight: bold;
-  color: white;
-}
-.app {
-  padding-top: 0;
-}
-
-#timer {
-  margin-top: -0px;
-
-}
-
-/* ===== NOUVEL AFFICHAGE GRAND FORMAT ===== */
-
-#timer {
-  font-size: 120px !important;
-  line-height: 1;
-  margin: 5px 0 10px 0;
-}
-
-#rabbit {
-  width: 260px !important;
-  height: 260px !important;
-  object-fit: contain;
-}
-
-#rabbitState {
-  font-size: 28px !important;
-  margin: 5px 0 !important;
-}
-
-#message {
-  font-size: 32px !important;
-  margin: 5px 0 10px 0 !important;
-}
-
-#buzzer {
-  position: relative !important;
-  bottom: auto !important;
-  left: auto !important;
-  transform: none !important;
-
-  width: 280px !important;
-  height: 280px !important;
-
-  margin: 20px auto 30px auto !important;
-
-  font-size: 60px !important;
-  flex-shrink: 0;
-}
-/* ===== DISPOSITION FINALE MOBILE ===== */
-
-.app {
-  min-height: 100dvh;
-  padding: 10px 12px 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Gros chiffre */
-#timer {
-  font-size: 100px;
-  line-height: 0.95;
-  margin: 5px 0 10px;
-}
-
-/* Lapin plus petit */
-#rabbit {
-  width: 170px;
-  height: 170px;
-  object-fit: contain;
-}
-
-/* TRANQUILLE / RÉFLÉCHIS / etc. */
-#rabbitState {
-  font-size: 25px;
-  margin: 2px 0;
-}
-
-/* PRÊT ? / score */
-#message {
-  font-size: 30px;
-  min-height: 35px;
-  margin: 2px 0 12px;
-}
-
-/* ÉNORME BUZZ */
-#buzzer {
-  position: relative !important;
-  left: auto !important;
-  bottom: auto !important;
-  transform: none !important;
-
-  width: min(82vw, 380px) !important;
-  height: min(82vw, 380px) !important;
-
-  margin: 5px auto 0 !important;
-  flex-shrink: 0;
-}
-
-#buzzer span {
-  font-size: 64px;
-}
-
-/* RESET éloigné pour éviter les appuis accidentels */
-#reset {
-  margin-top: 45px !important;
-  padding: 10px 28px;
-}
-#rabbit {
-  width: 145px !important;
-  height: 145px !important;
-}
-
-#buzzer {
-  width: min(92vw, 430px) !important;
-  height: min(92vw, 430px) !important;
-}
-
-#buzzer span {
-  font-size: 72px !important;
-}
-
-#reset {
-  margin-top: 55px !important;
-}
-
-/* ===== PLEIN ECRAN ===== */
-
-html, body {
-  margin: 0;
-  width: 100%;
-  min-height: 100%;
-}
-
-body {
-  min-height: 100dvh;
-}
-
-.app {
-  width: 100%;
-  min-height: 100dvh;
-  padding: 15px 12px 30px !important;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  /* Répartit le contenu sur toute la hauteur */
-  justify-content: space-between !important;
-}
-
-/* On garde les tailles actuelles */
-
-#timer {
-  margin: 0 !important;
-}
-
-#rabbit {
-  margin: 0 !important;
-}
-
-#rabbitState {
-  margin: 0 !important;
-}
-
-#message {
-  margin: 0 !important;
-}
-
-#buzzer {
-  margin: 0 auto !important;
-}
-
-#reset {
-  margin: 0 !important;
-}
-
-/* ===== DISPOSITION FINALE ===== */
-
-.app {
-  min-height: 100dvh !important;
-  padding: 15px 12px 25px !important;
-  justify-content: flex-start !important;
-}
-
-#timer {
-  margin: 0 0 15px 0 !important;
-}
-
-#rabbit {
-  margin: 0 !important;
-}
-
-#rabbitState {
-  margin: 4px 0 0 0 !important;
-}
-
-#message {
-  margin: 5px 0 20px 0 !important;
-}
-
-/* Gros buzzer */
-#buzzer {
-  margin: 10px auto 0 !important;
-}
-
-/* RESET loin du buzzer */
-#reset {
-  margin-top: auto !important;
-  margin-bottom: 10px !important;
+  100% {
+    transform: scale(1);
+  }
 }
