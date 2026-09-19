@@ -19,28 +19,46 @@ const app = document.getElementById("app");
 const rabbit = document.getElementById("rabbit");
 const rabbitState = document.getElementById("rabbitState");
 
-function beep(frequency = 700, duration = 100) {
-  try {
+let audioContext = null;
+
+function initAudio() {
+  if (!audioContext) {
     const AudioContext =
       window.AudioContext || window.webkitAudioContext;
 
-    const audioContext = new AudioContext();
-    const oscillator = audioContext.createOscillator();
-    const gain = audioContext.createGain();
+    audioContext = new AudioContext();
+  }
 
-    oscillator.connect(gain);
-    gain.connect(audioContext.destination);
-
-    oscillator.frequency.value = frequency;
-    gain.gain.value = 0.12;
-
-    oscillator.start();
-
-    oscillator.stop(
-      audioContext.currentTime + duration / 1000
-    );
-  } catch (e) {}
+  if (audioContext.state === "suspended") {
+    audioContext.resume();
+  }
 }
+
+function beep(frequency = 700, duration = 100) {
+  if (!audioContext) return;
+
+  const oscillator = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+
+  oscillator.connect(gain);
+  gain.connect(audioContext.destination);
+
+  oscillator.type = "sine";
+  oscillator.frequency.value = frequency;
+
+  gain.gain.setValueAtTime(
+    0.18,
+    audioContext.currentTime
+  );
+
+  oscillator.start();
+
+  oscillator.stop(
+    audioContext.currentTime + duration / 1000
+  );
+}
+
+
 
 function updateRabbit() {
 
@@ -133,6 +151,7 @@ function startRound() {
   }, 1000);
 }
 
+  initAudio();
 buzzer.addEventListener("click", () => {
 
   /*
