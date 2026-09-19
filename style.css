@@ -37,7 +37,7 @@ body {
 /* ===== CHIFFRE ===== */
 
 #timer {
-  font-size: clamp(80px, 14vh, 135px);
+  font-size: clamp(100px, 16vh, 150px);
   line-height: 0.9;
   font-weight: 900;
 
@@ -50,8 +50,8 @@ body {
 /* ===== LAPIN ===== */
 
 #rabbit {
-  width: clamp(150px, 24vh, 220px);
-  height: clamp(150px, 24vh, 220px);
+  width: clamp(175px, 26vh, 240px);
+  height: clamp(175px, 26vh, 240px);
 
   object-fit: contain;
 
@@ -80,7 +80,7 @@ body {
   line-height: 1;
   font-weight: 900;
 
-  margin: 6px 0 12px;
+  margin: 4px 0 18px;
 
   text-align: center;
 }
@@ -88,8 +88,8 @@ body {
 /* ===== GROS BUZZ ===== */
 
 #buzzer {
-  width: min(78vw, 48vh);
-  height: min(78vw, 48vh);
+  width: min(86vw, 52vh);
+  height: min(86vw, 52vh);
 
   flex-shrink: 0;
 
@@ -141,7 +141,8 @@ body {
 
 #reset {
   margin-top: auto;
-
+margin-bottom: 5px;
+  
   min-width: 130px;
   padding: 10px 24px;
 
