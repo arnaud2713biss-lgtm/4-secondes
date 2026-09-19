@@ -118,7 +118,8 @@ function startRound() {
       lost = true;
 
       message.textContent =
-        "PERDU ! • " + score + " RÉPONSES";
+  score + (score === 1 ? " RÉPONSE" : " RÉPONSES");
+  
 
       app.classList.add("lost");
 
