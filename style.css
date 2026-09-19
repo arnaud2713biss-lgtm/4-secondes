@@ -498,3 +498,38 @@ body {
 #reset {
   margin: 0 !important;
 }
+
+/* ===== DISPOSITION FINALE ===== */
+
+.app {
+  min-height: 100dvh !important;
+  padding: 15px 12px 25px !important;
+  justify-content: flex-start !important;
+}
+
+#timer {
+  margin: 0 0 15px 0 !important;
+}
+
+#rabbit {
+  margin: 0 !important;
+}
+
+#rabbitState {
+  margin: 4px 0 0 0 !important;
+}
+
+#message {
+  margin: 5px 0 20px 0 !important;
+}
+
+/* Gros buzzer */
+#buzzer {
+  margin: 10px auto 0 !important;
+}
+
+/* RESET loin du buzzer */
+#reset {
+  margin-top: auto !important;
+  margin-bottom: 10px !important;
+}
